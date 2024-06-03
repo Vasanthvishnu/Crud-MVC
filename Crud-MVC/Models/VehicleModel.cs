@@ -14,5 +14,6 @@ namespace Crud_MVC.Models
         public string DriverName { get; set; }
         public long ContactNumber { get; set; }
         public string Location { get; set; }
+
     }
 }
