@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace Crud_MVC.Models
 {
+
     public class VehicleModel
     {
         public int Id { get; set; }

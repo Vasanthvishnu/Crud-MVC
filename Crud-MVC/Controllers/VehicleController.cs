@@ -5,17 +5,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using MVCClassLibrary;
 
 namespace Crud_MVC.Controllers
 {
     public class VehicleController : Controller
     {
         IConfiguration configuration;
-        
-        // GET: VehicleController
-        public ActionResult Index()
+        VehicleRepostory value;
+        public VehicleController()
         {
-            return View();
+            value = new VehicleRepostory( configuration);
+        }
+
+        // GET: VehicleController
+        public ActionResult ShowAll()
+        {
+            var value1=value.ShowAll();
+            return View("ShowAll", value1);
         }
 
         // GET: VehicleController/Details/5
