@@ -1,28 +1,29 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using MVCClassLibrary;
+using VehicleLibrary;
 
 namespace Crud_MVC.Controllers
 {
+
     public class VehicleController : Controller
     {
-        IConfiguration configuration;
-        VehicleRepostory value;
-        public VehicleController()
-        {
-            value = new VehicleRepostory( configuration);
-        }
+        VehicleRepository value;
 
-        // GET: VehicleController
-        public ActionResult ShowAll()
+        public VehicleController(IConfiguration configuration)
         {
-            var value1=value.ShowAll();
-            return View("ShowAll", value1);
+            value = new VehicleRepository(configuration);
+        }
+        
+        // GET: VehicleController
+        public ActionResult Index()
+        {
+            var Modeldata =value.ShowAll();
+            return View("Showall", Modeldata);
         }
 
         // GET: VehicleController/Details/5
@@ -34,7 +35,8 @@ namespace Crud_MVC.Controllers
         // GET: VehicleController/Create
         public ActionResult Create()
         {
-            return View();
+            var Veh = new VehicleModel();
+            return View("Create",Veh);
         }
 
         // POST: VehicleController/Create

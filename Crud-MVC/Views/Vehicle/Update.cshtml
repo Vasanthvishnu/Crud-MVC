@@ -1,4 +1,4 @@
-﻿@model Crud_MVC.Models.VehicleModel
+﻿@model VehicleLibrary.VehicleModel
 
 @{
     ViewData["Title"] = "Update";
@@ -41,11 +41,6 @@
                 <label asp-for="ContactNumber" class="control-label"></label>
                 <input asp-for="ContactNumber" class="form-control" />
                 <span asp-validation-for="ContactNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Location" class="control-label"></label>
-                <input asp-for="Location" class="form-control" />
-                <span asp-validation-for="Location" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

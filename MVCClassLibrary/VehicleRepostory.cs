@@ -1,40 +1,40 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System;
 using System.Data.SqlClient;
-using Crud_MVC;
+using System.Text;
+using System.Threading.Tasks;
 using Dapper;
 using System.Collections.Generic;
-using Crud_MVC.Models;
+using System.Linq;
+using MVCClassLibrary;
+
+
 
 namespace MVCClassLibrary
 {
     public class VehicleRepostory
     {
-       
-        SqlConnection con;
-        IConfiguration _configuretion;
-
-       
-
-        public VehicleRepostory(IConfiguration configuretion)
+        SqlConnection obj;
+        IConfiguration _configurestion;
+        public VehicleRepostory(IConfiguration configurestion)
         {
-            _configuretion = configuretion;
-            var a = _configuretion.GetConnectionString("DbConnection");
-            con = new SqlConnection(a);
+            _configurestion = configurestion;
+            var veh = _configurestion.GetConnectionString("DbConnection");
+            obj = new SqlConnection(veh);
         }
         public void Insert(VehicleModel vehicle)
         {
             try
             {
                 var Insertsql = ($"exec InsertVehicle'{vehicle.Name}','{vehicle.VehicleNumber}','{vehicle.OwnerName}','{vehicle.DriverName}',{vehicle.ContactNumber}");
-                con.Open();
-                con.Execute(Insertsql);
-                con.Close();
+                obj.Open();
+                obj.Execute(Insertsql);
+                obj.Close();
 
             }
             catch (SqlException ex)
             {
-                throw ex;
+                throw ;
             }
             catch (Exception ex)
             {
@@ -46,9 +46,9 @@ namespace MVCClassLibrary
             try
             {
                 var update = ($"exec UpdateVehicle'{DriverName}',{ContactNumber},'{VehicleNumber}'");
-                con.Open();
-                con.Execute(update);
-                con.Close();
+                obj.Open();
+                obj.Execute(update);
+                obj.Close();
             }
             catch (SqlException ex)
             {
@@ -66,9 +66,9 @@ namespace MVCClassLibrary
             try
             {
                 var query = ($"exec  ShowAll");
-                con.Open();
-                var result = con.Query<VehicleModel>(query);
-                con.Close();
+                obj.Open();
+                var result = obj.Query<VehicleModel>(query);
+                obj.Close();
                 return (result);
 
             }
@@ -78,7 +78,7 @@ namespace MVCClassLibrary
             }
             finally
             {
-               con.Close();
+                obj.Close();
             }
             
         }
@@ -89,9 +89,9 @@ namespace MVCClassLibrary
                 if (VehicleNumber != null && VehicleNumber.Length != 0)
                 {
                     var Remove = ($" exec RemoveVehicle'{VehicleNumber}'");
-                    con.Open();
-                    con.Execute(Remove);
-                    con.Close();
+                    obj.Open();
+                    obj.Execute(Remove);
+                    obj.Close();
                 }
             }
             catch (SqlException ex)

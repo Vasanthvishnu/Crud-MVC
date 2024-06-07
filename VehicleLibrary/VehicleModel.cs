@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace MVCClassLibrary
+namespace VehicleLibrary
 {
-
     public class VehicleModel
     {
         public int Id { get; set; }
@@ -14,7 +10,6 @@ namespace MVCClassLibrary
         public string OwnerName { get; set; }
         public string DriverName { get; set; }
         public long ContactNumber { get; set; }
-        public string Location { get; set; }
-
+        
     }
 }

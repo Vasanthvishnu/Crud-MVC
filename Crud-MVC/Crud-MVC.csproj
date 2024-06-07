@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MVCClassLibrary\MVCClassLibrary.csproj" />
+    <ProjectReference Include="..\VehicleLibrary\VehicleLibrary.csproj" />
   </ItemGroup>
 
 </Project>
