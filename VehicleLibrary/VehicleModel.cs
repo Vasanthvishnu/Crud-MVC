@@ -11,5 +11,6 @@ namespace VehicleLibrary
         public string DriverName { get; set; }
         public long ContactNumber { get; set; }
         
+        
     }
 }
