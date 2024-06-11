@@ -13,10 +13,12 @@ namespace Crud_MVC.Controllers
     public class VehicleController : Controller
     {
         VehicleRepository value;
+        ILocationRepository _IlocationRepository;
 
-        public VehicleController(IConfiguration configuration)
+        public VehicleController(IConfiguration configuration, ILocationRepository IlocationRepository)
         {
             value = new VehicleRepository(configuration);
+            _IlocationRepository = IlocationRepository;
         }
         
         // GET: VehicleController
@@ -92,10 +94,11 @@ namespace Crud_MVC.Controllers
         // POST: VehicleController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult delete(int Id)
+        public ActionResult Remove(String VehicleNumber)
         {
             try
             {
+                value.Remove(VehicleNumber);
                 return RedirectToAction(nameof(Index));
             }
             catch

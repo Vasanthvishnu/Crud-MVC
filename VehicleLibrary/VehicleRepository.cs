@@ -25,7 +25,7 @@ namespace VehicleLibrary
                 try
                 {
 
-                    var Insertsql = ($"exec InsertVehicle'{Vehicle.Name}','{Vehicle.VehicleNumber}','{Vehicle.OwnerName}','{Vehicle.DriverName}',{Vehicle.ContactNumber}");
+                    var Insertsql = ($"exec InsertVehicle'{Vehicle.Name}','{Vehicle.VehicleNumber}','{Vehicle.OwnerName}','{Vehicle.DriverName}',{Vehicle.ContactNumber},'{Vehicle.Locations}'");
                     DAL.Open();
                     DAL.Execute(Insertsql);
                     DAL.Close();

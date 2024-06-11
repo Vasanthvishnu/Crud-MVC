@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace VehicleLibrary
 {
@@ -11,6 +12,8 @@ namespace VehicleLibrary
         public string DriverName { get; set; }
         public long ContactNumber { get; set; }
         
-        
+        public long LocationId { get; set; }
+
+        public IEnumerable<LocationModel> Locations { get; set; }       
     }
 }

@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VehicleLibrary;
 
 namespace Crud_MVC
 {
@@ -24,6 +25,7 @@ namespace Crud_MVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddTransient<ILocationRepository, LocationRepository>();
             
         }
 
