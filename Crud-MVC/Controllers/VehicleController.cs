@@ -23,7 +23,7 @@ namespace Crud_MVC.Controllers
         
         // GET: VehicleController
         public ActionResult Index()
-        {
+         {
             var Modeldata =value.ShowAll();
             return View("Showall", Modeldata);
         }
@@ -38,7 +38,10 @@ namespace Crud_MVC.Controllers
         // GET: VehicleController/Create
         public ActionResult Create()
         {
+            var locations = _IlocationRepository.ShowAll();
+
             var Veh = new VehicleModel();
+            Veh.Locations = locations;
             return View("Create",Veh);
         }
 
@@ -49,8 +52,24 @@ namespace Crud_MVC.Controllers
         {
             try
             {
-                value.Insert(refer);
-                return RedirectToAction(nameof(Index));
+                var locations = _IlocationRepository.ShowAll();
+                var Veh = new VehicleModel();
+                Veh.Locations = locations;
+                if(ModelState.IsValid)
+                {
+                    if(false)
+                    {
+                        ModelState.AddModelError("", "Email Already Exists");
+                        return View("Create", Veh);
+                    }
+                    value.Insert(refer);
+                    return RedirectToAction(nameof(Index));
+                }else
+                {
+                    return View("Create", Veh);
+                }
+              //  value.Insert(refer);
+               // return RedirectToAction(nameof(Index));
             }
             catch
             {
@@ -72,10 +91,10 @@ namespace Crud_MVC.Controllers
         {
             try
             {
-                var name = vehicle.VehicleNumber;
+                var Id = vehicle.Id;
                 var number = vehicle.ContactNumber;
                 var drivername = vehicle.DriverName;
-                value.Update(name, number,drivername);
+                value.Update(Id, number,drivername);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -94,7 +113,7 @@ namespace Crud_MVC.Controllers
         // POST: VehicleController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Remove(String VehicleNumber)
+        public ActionResult delete(String VehicleNumber)
         {
             try
             {

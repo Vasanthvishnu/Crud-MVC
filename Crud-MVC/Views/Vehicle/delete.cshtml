@@ -49,9 +49,9 @@
         </dd>
     </dl>
     
-    <form asp-action="Remove">
-        <input asp-for="VehicleNumber" type="hidden" class="form-control"/>
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
+    <form asp-action="delete">
+        <input asp-for="Id" type="hidden" class="form-control"/>
+        <input type="submit" value="delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>
 </div>

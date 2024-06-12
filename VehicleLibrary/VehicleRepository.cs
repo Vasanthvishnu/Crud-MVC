@@ -40,11 +40,11 @@ namespace VehicleLibrary
                     throw ex;
                 }
             }
-            public void Update(string VehicleNumber, long ContactNumber ,string drivername)
+            public void Update(int Id, long ContactNumber ,string drivername)
             {
                 try
                 {
-                    var update = ($"exec UpdateVehicle'{VehicleNumber}','{drivername}',{ContactNumber}");
+                    var update = ($"exec UpdateVehicle {Id},'{drivername}',{ContactNumber}");
                     DAL.Open();
                     DAL.Execute(update);
                     DAL.Close();
