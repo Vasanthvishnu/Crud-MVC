@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace VehicleLibrary
 {
-     public class LocationRepository:ILocationRepository
+     public class LocationRepository:ILocationRepository  
     {
         SqlConnection DAL;
         IConfiguration _configuration;

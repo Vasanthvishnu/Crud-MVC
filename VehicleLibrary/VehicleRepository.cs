@@ -25,7 +25,7 @@ namespace VehicleLibrary
                 try
                 {
 
-                    var Insertsql = ($"exec InsertVehicle'{Vehicle.Name}','{Vehicle.VehicleNumber}','{Vehicle.OwnerName}','{Vehicle.DriverName}',{Vehicle.ContactNumber},'{Vehicle.Locations}'");
+                    var Insertsql = ($"exec InsertVehicle'{Vehicle.Name}','{Vehicle.VehicleNumber}','{Vehicle.OwnerName}','{Vehicle.DriverName}',{Vehicle.ContactNumber},'{Vehicle.LocationId}'");
                     DAL.Open();
                     DAL.Execute(Insertsql);
                     DAL.Close();
@@ -80,13 +80,13 @@ namespace VehicleLibrary
                 }
                 
             }
-            public void Remove(string VehicleNumber)
+            public void Remove(int Id)
             {
                 try
                 {
-                    if (VehicleNumber != null && VehicleNumber.Length != 0)
+                    if (Id != null )
                     {
-                        var Remove = ($" exec RemoveVehicle'{VehicleNumber}'");
+                        var Remove = ($" exec deleteVehicle {Id}");
                         DAL.Open();
                         DAL.Execute(Remove);
                         DAL.Close();

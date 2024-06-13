@@ -41,7 +41,7 @@ namespace Crud_MVC.Controllers
             var locations = _IlocationRepository.ShowAll();
 
             var Veh = new VehicleModel();
-            Veh.Locations = locations;
+            Veh.Locations =locations;
             return View("Create",Veh);
         }
 
@@ -104,20 +104,20 @@ namespace Crud_MVC.Controllers
         }
 
         // GET: VehicleController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int Id)
         {
-            var user = value.getbyid(id).FirstOrDefault();
+            var user = value.getbyid(Id).FirstOrDefault();
             return View("delete",user);
         }
 
         // POST: VehicleController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult delete(String VehicleNumber)
+        public ActionResult delete(int Id)
         {
             try
             {
-                value.Remove(VehicleNumber);
+                value.Remove(Id);
                 return RedirectToAction(nameof(Index));
             }
             catch
